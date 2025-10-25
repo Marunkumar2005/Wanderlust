@@ -25,10 +25,10 @@ const dbUrl = process.env.ATLASDB_URL;
 async function main() {
     try {
         await mongoose.connect(dbUrl, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-            tls: true // ensure TLS for Atlas
-        });
+    // useNewUrlParser and useUnifiedTopology are deprecated in MongoDB driver 4+
+    tls: true // keep TLS
+});
+
         console.log("Connected to MongoDB Atlas");
     } catch (err) {
         console.error("MongoDB connection error:", err);
