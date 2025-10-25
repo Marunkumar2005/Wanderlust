@@ -2,7 +2,7 @@ const { number, required } = require('joi');
 const mongoose = require('mongoose');
 const { type } = require('os');
 const review = require('./review');
-const { GEOMETRY } = require('mysql/lib/protocol/constants/types');
+
 const Schema = mongoose.Schema;
 
 const listingSchema = new Schema({
