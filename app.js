@@ -92,8 +92,11 @@ app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
 
-app.get("/", (req, res) => {
-    res.render("listings/index"); // Make sure you have views/home.ejs
+const Listing = require("./models/listing");
+
+app.get("/", async (req, res) => {
+    const allListings = await Listing.find({});
+    res.render("listings/index", { allListings });
 });
 
 // ----- Error Handling -----
