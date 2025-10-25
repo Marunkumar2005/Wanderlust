@@ -92,6 +92,10 @@ app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
 
+app.get("/", (req, res) => {
+    res.render("index.ejs"); // Make sure you have views/home.ejs
+});
+
 // ----- Error Handling -----
 app.use((err, req, res, next) => {
     const { statusCode = 500 } = err;
