@@ -106,7 +106,8 @@ app.use((err, req, res, next) => {
 
 });
 
-app.listen(8080, () => {
-    console.log("server is listenin to port 8080");
+const port = process.env.PORT || 8080; // Use Render's assigned port if available
 
+app.listen(port, () => {
+    console.log(`Server is listening on port ${port}`);
 });
