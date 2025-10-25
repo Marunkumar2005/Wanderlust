@@ -33,7 +33,13 @@ main().then(() => {
     });
 
 async function main() {
-    await mongoose.connect(dbUrl);
+       await mongoose.connect(dbUrl, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        tls: true, // enable TLS/SSL
+        tlsAllowInvalidCertificates: false, // keep false in production
+    });
+
 
 }
 
@@ -55,7 +61,7 @@ const store=MongoStore.create(
         },touchAfter:24*3600,
     }
 );
-store.on("error",()=>{
+store.on("error",(err)=>{
     console.log("error in mongo sesssion store",err);
 });
 const sessionOptions = {
@@ -106,7 +112,8 @@ app.use((err, req, res, next) => {
 
 });
 
-const port = process.env.PORT || 8080; // Use Render's assigned port if available
+const port = process.env.PORT || 8080;
+// Use Render's assigned port if available
 
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}`);

@@ -1,5 +1,4 @@
 
-const { type } = require("os");
 const Listing = require("../models/listing");
 const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
 const mapToken = process.env.MAP_TOKEN;
@@ -19,32 +18,33 @@ module.exports.renderNewForm = (req, res) => {
 
 
 module.exports.createListing = async (req, res, next) => {
-   
-        let response = await geocodingClient
-            .forwardGeocode({
-                query: req.body.listing.location,
-                limit: 1,
-            })
-            .send();
-       
-        // Handle image
-        let url = req.file.path;
-        let filename = req.file.filename;
-        // Create listing
-        const newListing = new Listing(req.body.listing);
-        newListing.owner = req.user._id;
-        newListing.image = { url, filename };
-        console.log("Mapbox geometry:", response.body.features[0].geometry);
 
-        newListing.geometry = {type:"Point",
-           coordinates: response.body.features[0].geometry.coordinates,  // type auto-filled by schema
-        }
-        let savedListing=await newListing.save();
-        console.log(savedListing);
-        req.flash("success", "New listing created!");
-        res.redirect("/listings");
-    } 
-;
+    let response = await geocodingClient
+        .forwardGeocode({
+            query: req.body.listing.location,
+            limit: 1,
+        })
+        .send();
+
+    // Handle image
+    let url = req.file.path;
+    let filename = req.file.filename;
+    // Create listing
+    const newListing = new Listing(req.body.listing);
+    newListing.owner = req.user._id;
+    newListing.image = { url, filename };
+    console.log("Mapbox geometry:", response.body.features[0].geometry);
+
+    newListing.geometry = {
+        type: "Point",
+        coordinates: response.body.features[0].geometry.coordinates,  // type auto-filled by schema
+    }
+    let savedListing = await newListing.save();
+    console.log(savedListing);
+    req.flash("success", "New listing created!");
+    res.redirect("/listings");
+}
+    ;
 
 
 
@@ -64,7 +64,7 @@ module.exports.showListing = async (req, res) => {
 
     }
 
-console.log(listing);
+    console.log(listing);
     res.render("listings/show.ejs", { listing });
 
 
