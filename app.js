@@ -93,7 +93,7 @@ app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
 
 app.get("/", (req, res) => {
-    res.render("index"); // Make sure you have views/home.ejs
+    res.render("listings/index"); // Make sure you have views/home.ejs
 });
 
 // ----- Error Handling -----
