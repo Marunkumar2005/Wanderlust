@@ -1,6 +1,6 @@
 body{
-    font-family: "Plus Jakarta Sans", sans-serif!important;
-  font-size: 0.7rem!important;
+    font-family: 'Plus Jakarta Sans', sans-serif!important;
+  font-size: 1.2rem!important;
     display: flex!important;
   flex-direction: column!important;
   min-height: 100vh!important;
@@ -12,17 +12,17 @@ body{
 
 /*navbar*/
 .navbar{
-    height: 4rem;
+    height: 5rem;
 background-color: white;
 }
 
 .fa-compass{
-    color:rgb(189, 20, 20);
-    font-size: 2rem;
+    color:rgb(187, 30, 111);
+    font-size: 2.3rem;
 }
 
 .nav-link{
-    color: #222 !important;;
+    color: #222222 !important;;
 
 }
 /* footer */
@@ -44,7 +44,6 @@ background-color: white;
 }
 .f-info-links,.f-info-socials,.f-info-brand{
     width: 100%;
-    
     display: flex;
     align-items: center;
    justify-content: center;
@@ -63,33 +62,36 @@ font-size: 1.2rem;
     display:flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: space-;
+    align-items: space-evenly;
     ;
 }
 /* 
 cards */
-.card-col{
+
+ .card-col{
     display: flex!important;
     align-items: flex-start!important;
     justify-content: space-evenly!important;
-    width: 100%!important;
+    /* width: 20rem!important; */
 }
+
 .listing-card{
     border: none!important;
-    margin-bottom: 2rem;
+    /* width: 100%!important; */
+    margin-bottom: 2rem; 
+   overflow: hidden;
  
-    
-
 }
+
 .card-img-top{
  border-radius: 1rem!important;   
  width: 100%!important;
  object-fit:cover!important; 
- height: 15rem!important;
+ height: 25rem!important;
 }
 .card-body{
     padding: 0 !important;
-    width: 70%!important;
+  
 
 }
 .card-text p{
@@ -98,7 +100,7 @@ cards */
 .listing-link{
     text-decoration: none;
 }
-/* card effect */
+
 
 .card-img-overlay{
     opacity: 0;
@@ -107,7 +109,36 @@ cards */
     opacity: 0.2;
     background-color: white;
     cursor: pointer;
+} 
+
+@media (max-width: 992px) {
+  .listing-card {
+    width: 18rem;
+  }
 }
+
+@media (max-width: 768px) {
+  .listing-card {
+    width: 16rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .card-col {
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  .listing-card {
+    width: 90%;
+  }
+  .card-img-top {
+    height: 20rem !important;
+  }
+}
+
+
+
+
 /*
 newpage */
 .add-btn{
@@ -126,13 +157,14 @@ edit page */
 }
 /*show page*/
 .show-img-edit{
-    height:20vh!important;
+    height:30vh!important;
+    width: 100%!important;
 
 }
-.show-img{
+.card-img-top.show-img{
     height: 30vh!important;
-    width:70%!important;
     margin-bottom: 10px;
+    width: 100%!important;
 }
 
 .btns{
@@ -143,12 +175,32 @@ edit page */
     padding-left:0 ;
     padding-right: 0;
 }
+
 /* 
 map */
 #map {
-    height:300px;
-    width:90vh;
+    height:400px;
+    width:100%!important;
 
      }
+
+/* For smaller screens map*/
+@media (max-width: 992px) {
+  #map {
+    height: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  #map {
+    height: 300px;
+  }
+}
+
+@media (max-width: 576px) {
+  #map {
+    height: 250px;
+  }
+}     
 
   

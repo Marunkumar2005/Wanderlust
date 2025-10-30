@@ -30,9 +30,6 @@ const listing=<%-JSON.stringify(listing)%>;
           <%=listing.country%>
         </p>
 
-
-
-
         </p>
       </div>
     </div>
@@ -90,14 +87,12 @@ const listing=<%-JSON.stringify(listing)%>;
                 <p><b>All Reviews</b></p>
                 <div class="row">
                   <% for(review of listing.reviews) {%>
-                    <div class="card col-5 col-sm-6  col-md-6 mb-5 " style="width: 200px;margin-right: 15px;">
+                    <div class="card col-5 ms-3 mb-3 " >
 
                       <div class="card-body">
                         <h5 class="card-title">@<%=review.author.username%>
                         </h5>
-
                         <p class="starability-result card-text" data-rating="<%= review.rating %>">
-
                         </p>
                         <p class="card-text">
                           <%=review.comment%>
@@ -116,7 +111,7 @@ const listing=<%-JSON.stringify(listing)%>;
                 </div>
                 <% } %>
         </div>
-        <div class="col-6 offset-3 mb-3">
+        <div class="col-8 offset-3 mb-3">
           <h3>Where you'll be</h3>
           <div id="map">
            
